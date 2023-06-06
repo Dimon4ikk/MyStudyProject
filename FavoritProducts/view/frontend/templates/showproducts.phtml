@@ -1,0 +1,5 @@
+<?php
+$viewModel = $block->getViewModel();
+
+echo $block->escapeHtml($viewModel->setName('Welcome'));
+echo $block->escapeHtml($viewModel->getName());

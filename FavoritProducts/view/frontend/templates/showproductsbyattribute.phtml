@@ -1,0 +1,14 @@
+<?php
+$viewModel = $block->getViewModel();
+
+
+$categoryProducts = $viewModel->getProductCollectionByCategories();
+
+foreach ($categoryProducts as $product) {
+    echo "<pre>";
+    print_r($product->getName());
+    echo "</pre>";
+}
+?>
+<h1><?= $block->escapeHtml($viewModel->test()); ?></h1>
+
