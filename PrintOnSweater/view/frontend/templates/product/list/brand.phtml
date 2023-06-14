@@ -1,0 +1,16 @@
+<?php
+$viewModel = $block->getViewModel();
+
+if ($viewModel->getProduct()->getData('body_position') !== null) {
+    echo '<b>' . $viewModel->getProduct()->getResource()->getAttribute('body_position')->getFrontend()->getAttribute()->getData('frontend_label') . ': </b>';
+    echo $viewModel->getProduct()->getData('body_position');
+} else { echo '<b>' . $viewModel->getProduct()->getResource()->getAttribute('body_position')->getFrontend()->getAttribute()->getData('frontend_label') . ': </b>'; ?>
+    <select style="max-width: 150px" name="111">
+        <option value="1">Top</option>
+        <option value="1">Bottom</option>
+        <option value="1">Chest</option>
+        <option value="1">Stomach</option>
+    </select>
+    <?php
+}
+?>
