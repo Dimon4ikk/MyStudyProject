@@ -1,0 +1,15 @@
+<?php
+$viewModel = $block->getViewModel();
+
+
+$categoryProducts = $viewModel->getProductCollection();
+if ($categoryProducts == null) {
+    echo "OOps";
+} else {
+    foreach ($categoryProducts as $product) {
+        echo "<pre>";
+        print_r($product->getData());
+        echo "</pre>";
+    }
+}
+?>
