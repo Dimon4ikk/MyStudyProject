@@ -1,0 +1,79 @@
+<?php
+$viewModel = $block->getViewModel();
+
+$collection = $viewModel->getProductCollection();
+?>
+<div class="table-wrapper orders-history">
+    <table class="data table table-order-items history" id="my-orders-table">
+        <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?php echo __('ID') ?></th>
+            <th scope="col" class="col name"><?php echo __('Name') ?></th>
+            <th scope="col" class="col email"><?php echo __('Content') ?></th>
+            <th scope="col" class="col createat"><?php echo __('Created At') ?></th>
+            <th scope="col" class="col action"><?php echo __('Action') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        foreach ($collection as $item): ?>
+            <tr>
+                <td data-th="<?= $viewModel->escapeHtml(__('ID')) ?>" class="col id">
+                    <?php echo $item->getData('id') ?>
+                </td>
+                <td data-th="<?= $viewModel->escapeHtml(__('Name')) ?>" class="col name">
+                    <?php echo $item->getData('name') ?>
+                </td>
+                <td data-th="<?= $viewModel->escapeHtml(__('Content')) ?>" class="col email">
+                    <?php echo $item->getData('post_content') ?>
+                </td>
+                <td data-th="<?= $viewModel->escapeHtml(__('Created At')) ?>"
+                    class="col title"><?php echo $item->getData('created_at'); ?>
+                </td>
+                <td data-th="<?= $viewModel->escapeHtml(__('Action')) ?>" class="col delete">
+                    <a href="<?php echo $block->getDeleteAction() . 'id/' . $item->getData('id'); ?>"><?php echo __('Delete') ?></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-8">
+        <form method="post"
+              action="<?php echo $viewModel->getFormAction(); ?>">
+            <fieldset class="fieldset">
+                <legend class="legend"><span><?= $this->escapeHtmlAttr(__('Create you Post')) ?></span></legend>
+                <fieldset class="fieldset row">
+                    <div class="fields col-md-6">
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $this->
+                                    escapeHtmlAttr(__('Name of Post')) ?></span></label>
+                            <div class="control">
+                                <input name="name" id="name" title="Name" value="" class="input-text" type="text"">
+                            </div>
+                        </div>
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $this->
+                                    escapeHtmlAttr(__('Context')) ?></span></label>
+                            <div class="control">
+                                <input name="post_content" id="email" title="Email" value="" class="input-text"
+                                       type="text"">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="Save"><span><?= $this->
+                            escapeHtmlAttr(__('Create')) ?></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
